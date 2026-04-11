@@ -116,32 +116,30 @@ body, html {
     transform: translate(-50%, -50%); 
 }
 
-.square {
+
+.square, .shadow {
     position: absolute;
+    border: 1vw solid;
+    border-bottom-width: 4vw;
+    /* Важно: чтобы картинка и тень внутри wrapper сидели в одной точке */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.square {
     background-color: white;
-    border: 17px solid white;
-    border-bottom-width: 50px;
+    border-color: white;
     object-fit: cover;
     display: block;
     z-index: 3; /* Фото выше тени */
 }
 
 .shadow {
-    position: absolute;
     background-color: black;
-    border: 17px solid black;
-    border-bottom-width: 50px;
     filter: blur(80px);
     z-index: 2; /* Тень ниже фото */
     pointer-events: none;
-}
-
-.square, .shadow {
-    position: absolute;
-    /* Важно: чтобы картинка и тень внутри wrapper сидели в одной точке */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .instructions {

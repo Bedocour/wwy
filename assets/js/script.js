@@ -123,7 +123,7 @@ async function init() {
         shadow.className = 'shadow';
         shadow.style.width = `${SQUARE_SIZE}px`;
         shadow.style.height = `${SQUARE_SIZE}px`;
-        
+
         // Создаем скрытый фоточк
         const img = document.createElement('img');
         img.className = 'square';
@@ -133,20 +133,21 @@ async function init() {
         const imgSrc = imageSources[index % imageSources.length];
         img.src = `./assets/imgs/memories/${imgSrc}`;
         img.style.objectFit = 'cover'; // Чтобы фото не сплющивалось
-        
+
         // Добавляем шум смещения и случайный поворот
         const noiseX = (Math.random() - 0.5) * 8;
         const noiseY = (Math.random() - 0.5) * 8;
         const randomRotation = (Math.random() - 0.5) * 15;
-        
+
         wrapper.style.left = `${centerX + pos.x * SCALE + noiseX}px`;
         wrapper.style.top = `${centerY + pos.y * SCALE + noiseY}px`;
-        
+
         // Начальное состояние для GSAP
         gsap.set(shadow, {opacity: 0.5});
+        gsap.to(shadow, {x: 368, y: 258});
         gsap.set(img, {rotation: randomRotation});
         gsap.set(wrapper, { scale: 2, opacity: 0 });
-        
+
         // Собираем "бутерброд"
         wrapper.appendChild(shadow); // Тень снизу
         wrapper.appendChild(img);     // Фото сверху
